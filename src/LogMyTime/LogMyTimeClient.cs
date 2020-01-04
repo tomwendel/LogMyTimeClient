@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Net.Http;
+using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
@@ -17,7 +19,8 @@ namespace LogMyTime
             _client.BaseAddress = new Uri("https://api.logmytime.de/v1/api.svc/");
             _client.DefaultRequestHeaders.Clear();
             _client.DefaultRequestHeaders.Add("X-LogMyTimeApiKey", apiKey);
-            _client.DefaultRequestHeaders.Add("accept", "application/json");
+            _client.DefaultRequestHeaders.Add("X-UserAgent", $"Tom Wendels Client {Assembly.GetCallingAssembly().GetName().Version}");
+            _client.DefaultRequestHeaders.Add("Accept", "application/json");
         }
 
         #region Projects
