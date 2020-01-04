@@ -8,14 +8,8 @@ namespace LogMyTime
     /// Repräsentiert einen Mitarbeiter
     /// </summary>
     [DataContract]
-    public sealed class User
+    public sealed class User : IndexedEntity<int>
     {
-        /// <summary>
-        /// Eine eindeutige Mitarbeiter-ID 
-        /// </summary>
-        [DataMember]
-        public int Id { get; set; }
-
         /// <summary>
         /// Anrede des Mitarbeiters 
         /// </summary>

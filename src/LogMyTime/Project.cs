@@ -8,14 +8,8 @@ namespace LogMyTime
     /// Repräsentiert ein einzelnes Projekt
     /// </summary>
     [DataContract]
-    public sealed class Project
+    public sealed class Project : IndexedEntity<int>
     {
-        /// <summary>
-        /// Eine eindeutige Projekt-ID
-        /// </summary>
-        [DataMember(Name = "ID")]
-        public int Id { get; set; }
-
         /// <summary>
         /// Die ID des Kunden oder 'null' falls keiner zugewiesen ist
         /// </summary>

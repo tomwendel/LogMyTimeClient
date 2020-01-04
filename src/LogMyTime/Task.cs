@@ -8,14 +8,8 @@ namespace LogMyTime
     /// Repräsentiert eine Tätigkeit
     /// </summary>
     [DataContract]
-    public sealed class Task
+    public sealed class Task : IndexedEntity<int>
     {
-        /// <summary>
-        /// Eine eindeutige Tätigkeits-ID 
-        /// </summary>
-        [DataMember]
-        public int Id { get; set; }
-
         /// <summary>
         /// Eine Beschreibung der Tätigkeit 
         /// </summary>

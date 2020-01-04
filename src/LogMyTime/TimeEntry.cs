@@ -8,14 +8,8 @@ namespace LogMyTime
     /// Repräsentiert einen Zeiteintrag
     /// </summary>
     [DataContract]
-    public sealed class TimeEntry
+    public sealed class TimeEntry : IndexedEntity<int>
     {
-        /// <summary>
-        /// Eine eindeutige Zeiteintrags-ID 
-        /// </summary>
-        [DataMember]
-        public int Id { get; set; }
-
         /// <summary>
         /// Art des Zeiteintrags
         /// </summary>
