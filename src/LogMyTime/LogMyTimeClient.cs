@@ -30,7 +30,7 @@ namespace LogMyTime
             var x = await _client.GetAsync(new Uri("Projects", UriKind.Relative), cancellationToken);
             x.EnsureSuccessStatusCode();
             var content = await x.Content.ReadAsStringAsync();
-            var y = JsonConvert.DeserializeObject<Response<Project>>(content);
+            var y = JsonConvert.DeserializeObject<Response<ResponseList<Project>>>(content);
             return y.D.Results;
         }
 
@@ -62,16 +62,80 @@ namespace LogMyTime
 
         #endregion
 
+        #region Clients
+
         public async Task<IEnumerable<Client>> GetClients(CancellationToken cancellationToken)
         {
             var x = await _client.GetAsync(new Uri("Clients", UriKind.Relative), cancellationToken);
             x.EnsureSuccessStatusCode();
             var content = await x.Content.ReadAsStringAsync();
-            var y = JsonConvert.DeserializeObject<Response<Client>>(content);
+            var y = JsonConvert.DeserializeObject<Response<ResponseList<Client>>>(content);
             return y.D.Results;
         }
 
+        public Task<Client> GetClientById(int clientId, CancellationToken cancellationToken)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Client> CreateClient(Client client, CancellationToken cancellationToken)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task UpdateClient(Client client, CancellationToken cancellationToken)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task DeleteClient(int clientId, CancellationToken cancellationToken)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
+
+        #region Tasks
+
+        public Task<IEnumerable<Task>> GetTasks(CancellationToken cancellationToken)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Task> GetTaskById(int taskId, CancellationToken cancellationToken)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Task> CreateTask(Task task, CancellationToken cancellationToken)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task UpdateTask(Task task, CancellationToken cancellationToken)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task DeleteTask(int taskId, CancellationToken cancellationToken)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
+
+        #region TimeEntries
+
+        #endregion
+
+        #region Users
+
+        #endregion
+
+        #region Stopwatch
 
 
+
+        #endregion
     }
 }
