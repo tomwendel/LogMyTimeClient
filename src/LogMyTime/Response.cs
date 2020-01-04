@@ -3,9 +3,9 @@
 namespace LogMyTime
 {
     [DataContract]
-    public sealed class Response<T>
+    internal sealed class Response<T>
     {
         [DataMember(Name = "d")]
-        public Result<T> D { get; set; }
+        public T D { get; set; }
     }
 }

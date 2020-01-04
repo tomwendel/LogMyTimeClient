@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 namespace LogMyTime
 {
     [DataContract]
-    public sealed class Result<T>
+    internal sealed class ResponseList<T>
     {
 
         [DataMember(Name = "results")]
