@@ -13,7 +13,7 @@ namespace LogMyTime
         /// <summary>
         /// Art des Zeiteintrags
         /// </summary>
-        [DataMember]
+        [DataMember(Name = "TypeID")]
         public TimeEntryType TypeId { get; set; }
 
         /// <summary>
@@ -26,7 +26,7 @@ namespace LogMyTime
         /// Der Endzeitpunkt des Eintrags. 
         /// </summary>
         [DataMember]
-        public DateTime EndTime { get; set; }
+        public DateTime? EndTime { get; set; }
 
         /// <summary>
         /// Die aus Start- und Endzeitpunkt errechnete Dauer des Zeiteintrags im hh:mm format, auf Minuten abgerundet. 
@@ -43,19 +43,19 @@ namespace LogMyTime
         /// <summary>
         /// Die ID des Mitarbeiters, dem der Zeiteintrag zugewiesen ist 
         /// </summary>
-        [DataMember]
+        [DataMember(Name = "UserID")]
         public int UserId { get; set; }
 
         /// <summary>
         /// Die Projekt-ID 
         /// </summary>
-        [DataMember]
+        [DataMember(Name = "ProjectID")]
         public int ProjectId { get; set; }
 
         /// <summary>
         /// Die Tätigkeits-ID, oder 'null' falls keine Tätigkeit existiert. 
         /// </summary>
-        [DataMember]
+        [DataMember(Name = "TaskID")]
         public int? TaskId { get; set; }
 
         /// <summary>
@@ -128,7 +128,7 @@ namespace LogMyTime
         /// Dieses Feld kann über die API nur ausgelesen, nicht aber beschrieben werden. 
         /// </summary>
         [DataMember]
-        public decimal? HourlyRate { get; set; }
+        public decimal? RevenuePerHour { get; set; }
 
         /// <summary>
         /// Der für den Zeiteintrag errechnete Umsatz, falls Stundensätze aktiviert sind und der Nutzer,
@@ -137,7 +137,7 @@ namespace LogMyTime
         /// Dieses Feld kann über die API nur ausgelesen, nicht aber beschrieben werden. 
         /// </summary>
         [DataMember]
-        public decimal? Revenue { get; set; }
+        public decimal? RevenueTotal { get; set; }
 
         /// <summary>
         /// Der Zeitpunkt, zu dem den Zeiteintrag zuletzt verändert wurde 
@@ -150,5 +150,21 @@ namespace LogMyTime
         /// </summary>
         [DataMember]
         public int LastChangeAuthor { get; set; }
+
+        /*
+        "ClientSideID": null,
+        "StartTimeLatitude": 0,
+        "StartTimeLongitude": 0,
+        "StartTimeAccuracy": 0,
+        "StartTimePositionStatus": 0,
+        "EndTimeLatitude": 0,
+        "EndTimeLongitude": 0,
+        "EndTimeAccuracy": 0,
+        "EndTimePositionStatus": 0,
+        "StopWatchCertificationStatus": 1,
+        "RSSTitle": "",
+        "RSSAuthorName": "",
+        "RSSSummary": ""
+        */
     }
 }

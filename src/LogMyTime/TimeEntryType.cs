@@ -9,6 +9,11 @@ namespace LogMyTime
     public enum TimeEntryType
     {
         /// <summary>
+        /// Standard Eintrag
+        /// </summary>
+        Default = 0,
+
+        /// <summary>
         /// Dauer-Zeiteintrag
         /// </summary>
         [EnumMember]
