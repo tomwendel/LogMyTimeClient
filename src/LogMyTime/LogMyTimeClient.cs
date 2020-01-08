@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Reflection;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Web;
 using Newtonsoft.Json;
 
 namespace LogMyTime
@@ -27,11 +29,12 @@ namespace LogMyTime
 
         public async Task<IEnumerable<Project>> GetProjects(CancellationToken cancellationToken)
         {
-            var x = await _client.GetAsync(new Uri("Projects", UriKind.Relative), cancellationToken);
-            x.EnsureSuccessStatusCode();
-            var content = await x.Content.ReadAsStringAsync();
-            var y = JsonConvert.DeserializeObject<Response<ResponseList<Project>>>(content);
-            return y.D.Results;
+            using (var response = await _client.GetAsync(new Uri("Projects", UriKind.Relative), cancellationToken))
+            {
+                response.EnsureSuccessStatusCode();
+                var content = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<Response<ResponseList<Project>>>(content).D.Results;
+            }
         }
 
         public async Task<Project> GetProjectById(int projectId, CancellationToken cancellationToken)
@@ -41,13 +44,7 @@ namespace LogMyTime
 
         public async Task<Project> CreateProject(Project project, CancellationToken cancellationToken)
         {
-            var serialized = JsonConvert.SerializeObject(project);
-            HttpContent z = new StringContent(serialized);
-            var x = await _client.PostAsync(new Uri("Projects", UriKind.Relative), z, cancellationToken);
-            x.EnsureSuccessStatusCode();
-            var content = await x.Content.ReadAsStringAsync();
-            var y = JsonConvert.DeserializeObject<Project>(content);
-            return y;
+            throw new NotImplementedException();
         }
 
         public System.Threading.Tasks.Task UpdateProject(Project project, CancellationToken cancellationToken)
@@ -66,11 +63,12 @@ namespace LogMyTime
 
         public async Task<IEnumerable<Client>> GetClients(CancellationToken cancellationToken)
         {
-            var x = await _client.GetAsync(new Uri("Clients", UriKind.Relative), cancellationToken);
-            x.EnsureSuccessStatusCode();
-            var content = await x.Content.ReadAsStringAsync();
-            var y = JsonConvert.DeserializeObject<Response<ResponseList<Client>>>(content);
-            return y.D.Results;
+            using (var response = await _client.GetAsync(new Uri("Clients", UriKind.Relative), cancellationToken))
+            {
+                response.EnsureSuccessStatusCode();
+                var content = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<Response<ResponseList<Client>>>(content).D.Results;
+            }
         }
 
         public Task<Client> GetClientById(int clientId, CancellationToken cancellationToken)
@@ -97,9 +95,14 @@ namespace LogMyTime
 
         #region Tasks
 
-        public Task<IEnumerable<Task>> GetTasks(CancellationToken cancellationToken)
+        public async Task<IEnumerable<Task>> GetTasks(CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            using (var response = await _client.GetAsync(new Uri("Tasks", UriKind.Relative), cancellationToken))
+            {
+                response.EnsureSuccessStatusCode();
+                var content = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<Response<ResponseList<Task>>>(content).D.Results;
+            }
         }
 
         public Task<Task> GetTaskById(int taskId, CancellationToken cancellationToken)

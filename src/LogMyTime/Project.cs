@@ -14,7 +14,7 @@ namespace LogMyTime
         /// Die ID des Kunden oder 'null' falls keiner zugewiesen ist
         /// </summary>
         [DataMember(Name = "ClientID")]
-        public int ClientId { get; set; }
+        public int? ClientId { get; set; }
 
         /// <summary>
         /// Der Name des Projekts
@@ -40,7 +40,7 @@ namespace LogMyTime
         /// Der Stundenrahmen in Sekunden
         /// </summary>
         [DataMember]
-        public int TimeBudget { get; set; }
+        public int? TimeBudget { get; set; }
 
         /// <summary>
         /// Zeigt an, ob das Projekt dem eingeloggten Nutzer zugewiesen ist.
