@@ -2,6 +2,15 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <Authors>Tom Wendel</Authors>
+    <Company>AntMe! GmbH</Company>
+    <Product>LogMyTime Client Library</Product>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <RepositoryUrl>https://github.com/tomwendel/LogMyTimeClient</RepositoryUrl>
+    <RepositoryType>Git</RepositoryType>
+    <PackageTags>LogMyTime, API, timetracking, client</PackageTags>
+    <PackageLicenseExpression>https://github.com/tomwendel/LogMyTimeClient/blob/master/LICENSE</PackageLicenseExpression>
   </PropertyGroup>
 
   <ItemGroup>
