@@ -134,7 +134,72 @@ namespace LogMyTime
 
         #region Stopwatch
 
+        /// <summary>
+        /// Liefert den Zeiteintrag der laufenden Stoppuhr mit allen zugehörigen Parametern zurück 
+        /// </summary>
+        public async Task<TimeEntry> CurrentStopWatch(CancellationToken cancellationToken)
+        {
+            using (var response = await _client.GetAsync(new Uri("CurrentStopWatch", UriKind.Relative), cancellationToken))
+            {
+                // Stop if resource is not available
+                if (response.StatusCode == HttpStatusCode.NotFound)
+                    return null;
 
+                response.EnsureSuccessStatusCode();
+
+                var content = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<Response<TimeEntry>>(content).D;
+            }
+        }
+
+        /// <summary>
+        /// Startet eine neue Stoppuhr und liefert den zugehörigen Zeiteintrag zurück 
+        /// </summary>
+        public async Task<TimeEntry> StartStopWatch(int projectId, int taskId, CancellationToken cancellationToken, bool? billable = null, string comment = null)
+        {
+            var sb = new StringBuilder();
+            sb.Append($"?ProjectId={projectId}");
+            sb.Append($"&TaskId={taskId}");
+            if (billable.HasValue)
+                sb.Append($"billable={billable}");
+            if (comment != null)
+                sb.Append($"comment={HttpUtility.UrlEncode(comment)}");
+
+            using (var response = await _client.GetAsync(new Uri($"StartStopWatch{sb}", UriKind.Relative), cancellationToken))
+            {
+                // 403 on existing items which are not accessable
+                // 500 on not existing items (task and project)
+
+                // Stop if resource is not available
+                if (response.StatusCode == HttpStatusCode.NotFound)
+                    return null;
+
+                response.EnsureSuccessStatusCode();
+
+                var content = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<Response<TimeEntry>>(content).D;
+            }
+        }
+
+        /// <summary>
+        /// Hält die aktuelle Stoppuhr an und liefert den zugehörigen Zeiteintrag zurück 
+        /// </summary>
+        public async Task<TimeEntry> HaltStopWatch(CancellationToken cancellationToken)
+        {
+            using (var response = await _client.GetAsync(new Uri("HaltStopWatch", UriKind.Relative), cancellationToken))
+            {
+                // Stop if resource is not available
+                if (response.StatusCode == HttpStatusCode.NotFound)
+                    return null;
+
+                response.EnsureSuccessStatusCode();
+
+                var content = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<Response<TimeEntry>>(content).D;
+            }
+        }
+
+        #endregion
 
         #endregion
     }
