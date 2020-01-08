@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using System.Web;
 using LogMyTime.Entities;
 using Newtonsoft.Json;
-using Task = LogMyTime.Entities.Task;
 
 namespace LogMyTime.Communication
 {
@@ -42,90 +41,90 @@ namespace LogMyTime.Communication
             }
         }
 
-        public async Task<Project> GetProjectById(int projectId, CancellationToken cancellationToken)
+        public Task<Project> GetProjectById(int projectId, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<Project> CreateProject(Project project, CancellationToken cancellationToken)
+        public Task<Project> CreateProject(Project project, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
         }
 
-        public System.Threading.Tasks.Task UpdateProject(Project project, CancellationToken cancellationToken)
+        public Task UpdateProject(Project project, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
         }
 
-        public System.Threading.Tasks.Task DeleteProject(int projectId, CancellationToken cancellationToken)
+        public Task DeleteProject(int projectId, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
         }
 
         #endregion
 
-        #region Clients
+        #region Customers
 
-        public async Task<IEnumerable<Client>> GetClients(CancellationToken cancellationToken)
+        public async Task<IEnumerable<Customer>> GetCustomers(CancellationToken cancellationToken)
         {
             using (var response = await _client.GetAsync(new Uri("Clients", UriKind.Relative), cancellationToken))
             {
                 response.EnsureSuccessStatusCode();
                 var content = await response.Content.ReadAsStringAsync();
-                return JsonConvert.DeserializeObject<Response<ResponseList<Client>>>(content).D.Results;
+                return JsonConvert.DeserializeObject<Response<ResponseList<Customer>>>(content).D.Results;
             }
         }
 
-        public Task<Client> GetClientById(int clientId, CancellationToken cancellationToken)
+        public Task<Customer> GetCustomerById(int customerId, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
         }
 
-        public Task<Client> CreateClient(Client client, CancellationToken cancellationToken)
+        public Task<Customer> CreateCustomer(Customer customer, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
         }
 
-        public Task UpdateClient(Client client, CancellationToken cancellationToken)
+        public Task UpdateCustomer(Customer customer, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
         }
 
-        public Task DeleteClient(int clientId, CancellationToken cancellationToken)
+        public Task DeleteCustomer(int customerId, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
         }
 
         #endregion
 
-        #region Tasks
+        #region Activities
 
-        public async Task<IEnumerable<Task>> GetTasks(CancellationToken cancellationToken)
+        public async Task<IEnumerable<Activity>> GetActivities(CancellationToken cancellationToken)
         {
             using (var response = await _client.GetAsync(new Uri("Tasks", UriKind.Relative), cancellationToken))
             {
                 response.EnsureSuccessStatusCode();
                 var content = await response.Content.ReadAsStringAsync();
-                return JsonConvert.DeserializeObject<Response<ResponseList<Task>>>(content).D.Results;
+                return JsonConvert.DeserializeObject<Response<ResponseList<Activity>>>(content).D.Results;
             }
         }
 
-        public Task<Task> GetTaskById(int taskId, CancellationToken cancellationToken)
+        public Task<Activity> GetActivityById(int activityId, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
         }
 
-        public Task<Task> CreateTask(Task task, CancellationToken cancellationToken)
+        public Task<Activity> CreateActivity(Activity activity, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
         }
 
-        public Task UpdateTask(Task task, CancellationToken cancellationToken)
+        public Task UpdateActivity(Activity activity, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
         }
 
-        public Task DeleteTask(int taskId, CancellationToken cancellationToken)
+        public Task DeleteActivity(int activityId, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
         }
@@ -142,9 +141,6 @@ namespace LogMyTime.Communication
 
         #region Stopwatch
 
-        /// <summary>
-        /// Liefert den Zeiteintrag der laufenden Stoppuhr mit allen zugehörigen Parametern zurück 
-        /// </summary>
         public async Task<TimeEntry> CurrentStopWatch(CancellationToken cancellationToken)
         {
             using (var response = await _client.GetAsync(new Uri("CurrentStopWatch", UriKind.Relative), cancellationToken))
@@ -160,9 +156,6 @@ namespace LogMyTime.Communication
             }
         }
 
-        /// <summary>
-        /// Startet eine neue Stoppuhr und liefert den zugehörigen Zeiteintrag zurück 
-        /// </summary>
         public async Task<TimeEntry> StartStopWatch(int projectId, int taskId, CancellationToken cancellationToken, bool? billable = null, string comment = null)
         {
             var sb = new StringBuilder();
@@ -189,9 +182,6 @@ namespace LogMyTime.Communication
             }
         }
 
-        /// <summary>
-        /// Hält die aktuelle Stoppuhr an und liefert den zugehörigen Zeiteintrag zurück 
-        /// </summary>
         public async Task<TimeEntry> HaltStopWatch(CancellationToken cancellationToken)
         {
             using (var response = await _client.GetAsync(new Uri("HaltStopWatch", UriKind.Relative), cancellationToken))

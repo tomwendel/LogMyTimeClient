@@ -8,7 +8,7 @@ namespace LogMyTime.Entities
     /// Repräsentiert einen Kunden
     /// </summary>
     [DataContract]
-    public sealed class Client : IndexedEntity<int>
+    public sealed class Customer : IndexedEntity<int>
     {
         /// <summary>
         /// Name des Kunden 

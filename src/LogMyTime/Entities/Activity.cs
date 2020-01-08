@@ -5,10 +5,10 @@ using System.Runtime.Serialization;
 namespace LogMyTime.Entities
 {
     /// <summary>
-    /// Repräsentiert eine Tätigkeit
+    /// Repräsentiert eine Tätigkeit (Task)
     /// </summary>
     [DataContract]
-    public sealed class Task : IndexedEntity<int>
+    public sealed class Activity : IndexedEntity<int>
     {
         /// <summary>
         /// Eine Beschreibung der Tätigkeit 
