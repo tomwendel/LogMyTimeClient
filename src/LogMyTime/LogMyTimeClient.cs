@@ -201,6 +201,18 @@ namespace LogMyTime
 
         #endregion
 
+        #region Change Log
+
+        public async Task<ChangeSet> GetChangeSet(DateTime lastRequest, CancellationToken cancellationToken)
+        {
+            using (var response = await _client.GetAsync(new Uri($"GetChangesDigest?LastSynchronizationTime={lastRequest:s}", UriKind.Relative), cancellationToken))
+            {
+                response.EnsureSuccessStatusCode();
+                var content = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<Response<ChangeSet>>(content).D;
+            }
+        }
+
         #endregion
     }
 }
