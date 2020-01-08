@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-namespace LogMyTime
+namespace LogMyTime.Entities
 {
     /// <summary>
     /// Repräsentiert das change set seit des letzten Abrufs

@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 
-namespace LogMyTime
+namespace LogMyTime.Entities
 {
     /// <summary>
     /// Repräsentiert ein einzelnes Projekt

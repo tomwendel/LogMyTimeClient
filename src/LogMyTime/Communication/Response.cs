@@ -1,6 +1,6 @@
 ﻿using System.Runtime.Serialization;
 
-namespace LogMyTime
+namespace LogMyTime.Communication
 {
     [DataContract]
     internal sealed class Response<T>

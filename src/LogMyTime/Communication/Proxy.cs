@@ -7,18 +7,23 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
+using LogMyTime.Entities;
 using Newtonsoft.Json;
+using Task = LogMyTime.Entities.Task;
 
-namespace LogMyTime
+namespace LogMyTime.Communication
 {
-    public sealed class LogMyTimeClient
+    public sealed class Proxy : IProxy
     {
         private readonly HttpClient _client;
 
-        public LogMyTimeClient(string apiKey)
+        public Proxy(string apiKey)
         {
-            _client = new HttpClient();
-            _client.BaseAddress = new Uri("https://api.logmytime.de/v1/api.svc/");
+            _client = new HttpClient
+            {
+                BaseAddress = new Uri("https://api.logmytime.de/v1/api.svc/")
+            };
+
             _client.DefaultRequestHeaders.Clear();
             _client.DefaultRequestHeaders.Add("X-LogMyTimeApiKey", apiKey);
             _client.DefaultRequestHeaders.Add("X-UserAgent", $"Tom Wendels Client {Assembly.GetCallingAssembly().GetName().Version}");

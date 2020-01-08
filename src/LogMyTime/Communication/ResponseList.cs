@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Runtime.Serialization;
 
-namespace LogMyTime
+namespace LogMyTime.Communication
 {
     [DataContract]
     internal sealed class ResponseList<T>

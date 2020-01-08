@@ -1,6 +1,6 @@
 ﻿using System.Runtime.Serialization;
 
-namespace LogMyTime
+namespace LogMyTime.Entities
 {
     /// <summary>
     /// Liste möglicher Zeiteintragstypen
