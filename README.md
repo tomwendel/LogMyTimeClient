@@ -1,5 +1,5 @@
 # LogMyTime Client
-This is a C# library for Timetracker LogMyTime.de
+This is a C# library to consume the API of the german online timetracker software LogMyTime (https://www.logmytime.de)
 
 ## Communication Layer
 In the first place this library allows you to communicate with the LogMyTime API on a very basic, but typed level. The communication layer only wraps the different data calls to the API and allows to get or send data to the server. It handels the Authentication, HTTP Calls and serialization of everything.
