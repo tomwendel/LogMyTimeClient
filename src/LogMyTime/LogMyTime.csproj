@@ -10,7 +10,7 @@
     <RepositoryUrl>https://github.com/tomwendel/LogMyTimeClient</RepositoryUrl>
     <RepositoryType>Git</RepositoryType>
     <PackageTags>LogMyTime, API, timetracking, client</PackageTags>
-    <PackageLicenseExpression>https://github.com/tomwendel/LogMyTimeClient/blob/master/LICENSE</PackageLicenseExpression>
+    <PackageLicenseExpression></PackageLicenseExpression>
   </PropertyGroup>
 
   <ItemGroup>

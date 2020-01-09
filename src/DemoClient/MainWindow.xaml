@@ -4,9 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DemoClient"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-        <Button Click="ButtonBase_OnClick">Click me</Button>
-    </StackPanel>
+        xmlns:views="clr-namespace:DemoClient.Views"
+        mc:Ignorable="d" Icon="favicon.ico"
+        Title="LogMyTime Client" Height="350" Width="400" WindowStyle="SingleBorderWindow" ResizeMode="NoResize" Topmost="True">
+    <views:StopWatchView />
 </Window>
