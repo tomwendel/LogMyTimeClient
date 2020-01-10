@@ -1,0 +1,52 @@
+﻿<UserControl x:Class="DemoClient.Views.StopWatchView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:DemoClient.Views"
+             xmlns:viewModels="clr-namespace:DemoClient.ViewModels"
+             mc:Ignorable="d" d:DataContext="{d:DesignInstance viewModels:StopWatchViewModel}"
+             d:DesignHeight="350" d:DesignWidth="400">
+    <UserControl.Resources>
+        <Style TargetType="Label">
+            <Setter Property="Padding" Value="5" />
+            <Setter Property="Margin" Value="5" />
+        </Style>
+        <Style TargetType="ComboBox">
+            <Setter Property="Padding" Value="5" />
+            <Setter Property="Margin" Value="5" />
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="Padding" Value="5" />
+            <Setter Property="Margin" Value="5" />
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Label Grid.Column="0" Grid.Row="0" Content="Customer" />
+        <ComboBox Grid.Column="1" Grid.Row="0" ItemsSource="{Binding Customers}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedCustomer}" />
+
+        <Label Grid.Column="0" Grid.Row="1" Content="Project" />
+        <ComboBox Grid.Column="1" Grid.Row="1" ItemsSource="{Binding Projects}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedProject}" />
+        
+        <Label Grid.Column="0" Grid.Row="2" Content="Activity" />
+        <ComboBox Grid.Column="1" Grid.Row="2" ItemsSource="{Binding Activities}" DisplayMemberPath="Description" SelectedItem="{Binding SelectedActivity}" />
+
+        <StackPanel Grid.Column="1" Grid.Row="3" Orientation="Horizontal">
+            <Button Content="Start" Command="{Binding StartWatch}" />
+            <Button Content="Stop" Command="{Binding StopWatch}" />
+        </StackPanel>
+
+    </Grid>
+</UserControl>
